@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+ 
+
+<h2>BIRTHDAY CALCULATOR</h2>
+
+ 
+
+<p>Please enter your name</p>
+<input id = "uName">
+
+ 
+
+<p>Please enter your birthday</p>
+<input id = "bday"> 
+
+ 
+
+<button type ="button" onclick='bdaycalculator()'>CLICK ME</button>
+
+ 
+
+<p id='name'>Your Name will go here</p>
+   <p id="birthday">This is your birthday</p>
+     <p id="tDate">Todays date is ...</p>
+     <p id="result">Your age in days</p>
+     
+   <p id="newButton">
+   <button type ="button" id='buttonID' class='memeAppear' onclick='displayMe()'>CLICK ME NEXT</button>
+</p>
+</br>
+</br>
+<p id="meme">
+<img id="myImage" class='memeAppear' src="https://s-media-cache-ak0.pinimg.com/736x/cb/fe/5b/cbfe5b789f2978ca877de3995c5a401a.jpg">
+</p>
+<p id="nextBday">countdown</p>
+
+ 
+
+<script>
+const myButton = document.getElementById("newButton");
+myButton.style.display ="none"; //this is hiding the button
+
+ 
+
+const theMeme = document.getElementById("meme");
+theMeme.style.display ="none"; //this is hiding the meme
+
+ 
+
+function bdaycalculator() {
+
+ 
+
+    let Name = document.getElementById("uName").value;
+     let birthday = document.getElementById("bday").value;
+      //converting birthday value into a date data type
+       let bdate = new Date(birthday + "Z");
+    let currentDate = new Date();
+
+ 
+
+       const diffTime= Math.abs(currentDate-bdate);
+     const diffDays = (Math.ceil(diffTime / (1000 * 60 * 60 * 24)))-1;
+
+ 
+
+document.getElementById("name").innerHTML= "Hello " + Name;
+document.getElementById("birthday").innerHTML= "Your birthday is on " + birthday;
+document.getElementById("tDate").innerHTML= "Todays date is " + currentDate;
+document.getElementById("result").innerHTML= "Days on this planet is " + diffDays; 
+
+ 
+
+const myButton = document.getElementById("newButton");
+myButton.style.display ="inline"; // reveals the hidden button 
+
+ 
+
+}
+
+ 
+
+function displayMe() {
+
+ 
+
+let birthday = document.getElementById("bday").value;
+let bdate = new Date(birthday + "Z");
+alert(bdate)
+let bMonth = bdate.getMonth()+1
+alert(bMonth)
+let dayOfMonth = bdate.getDate()+1
+alert(dayOfMonth)
+let today = new Date();
+let bday = new Date(today.getFullYear(),bMonth,dayOfMonth);
+if( today.getTime() > bday.getTime()) {
+    bday.setFullYear(bday.getFullYear()+1);
+}
+let diff = bday.getTime()-today.getTime();
+let days = Math.floor(diff/(1000*60*60*24));
+alert(days+" days until your next birthday");
+ 
+const theMeme = document.getElementById("meme");
+theMeme.style.display ="inline"; // reveals the hidden meme
+
+ 
+
+document.getElementById("nextBday").innerHTML= "future formula"
+}
+
+ 
+
+</script>
+
+ 
+
+
+</body>
+</html>
